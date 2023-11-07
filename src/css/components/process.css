@@ -1,0 +1,76 @@
+@layer components {
+	div.process {
+		display: grid;
+		grid-template-areas: "config block output";
+		/* grid-template-columns: 1fr 1fr 1fr; */
+		justify-content: center;
+		align-content: center;
+		justify-items: center;
+		align-items: center;
+		grid-gap: 20px;
+		
+		.config {
+			grid-area: config;
+			padding: 20px;
+			border-radius: 10px;
+			background-color: lch(100 20 270 / 0.1);
+			
+			& > * + * {
+				margin-top: 5px;
+			}
+			
+			label {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				width: 260px;
+			}
+			
+			select, input {
+				width: 160px;
+				text-align: right;
+			}
+		}
+		
+		.block {
+			grid-area: block;
+		}
+		
+		.output {
+			grid-area: output;
+			min-width: 9ch;
+			padding: 20px;
+			border-radius: 10px;
+			background-color: lch(100 20 270 / 0.1);
+			text-align: right;
+		}
+		
+		&.drill {
+			
+		}
+		
+		&.mill {
+			
+		}
+		
+		&.crush {
+			
+		}
+		
+		&.bulkprocess {
+			
+		}
+		
+		&.belt {
+			
+		}
+		
+		&.mix {
+			
+		}
+		
+		&.press {
+			
+		}
+	}
+}

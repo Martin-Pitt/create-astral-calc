@@ -1,0 +1,10 @@
+@import url('./css/reset.css');
+@import url('./css/skeleton.css');
+@import url('./css/fonts.css');
+
+@import url('./css/components/process-selector.css');
+@import url('./css/components/process.css');
+
+@import url('./css/pages/index.css');
+
+@layer reset, skeleton, components, pages;

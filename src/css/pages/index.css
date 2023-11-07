@@ -1,0 +1,7 @@
+@layer pages {
+	main.index {
+		display: grid;
+		grid-template-rows: auto minmax(auto, 1fr);
+		background-color: lch(6 1.65 328.72);
+	}
+}
