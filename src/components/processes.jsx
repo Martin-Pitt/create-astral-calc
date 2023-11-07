@@ -18,6 +18,13 @@ import {
 	timeToMix,
 	timeToPress,
 } from '../lib/calc';
+import Preview_Mechanical_Drill from '../assets/blocks/Mechanical_Drill.webp';
+import Preview_Millstone from '../assets/blocks/Millstone.webp';
+import Preview_Crushing_Wheel from '../assets/blocks/Crushing_Wheel.webp';
+import Preview_Encased_Fan from '../assets/blocks/Encased_Fan.webp';
+import Preview_Mechanical_Belt_Block from '../assets/blocks/Mechanical_Belt_Block.webp';
+import Preview_Mechanical_Mixer from '../assets/blocks/Mechanical_Mixer.webp';
+import Preview_Mechanical_Press from '../assets/blocks/Mechanical_Press.webp';
 
 
 function onRPM(event) {
@@ -96,7 +103,7 @@ export function Drill(props) {
 				<RPM/>
 				<BlockHardness/>
 			</div>
-			<img class="block" srcSet="assets/blocks/Mechanical_Drill.webp 2x"/>
+			<img class="block" srcSet={`${Preview_Mechanical_Drill} 2x`}/>
 			<div class="output">
 				{+timeToDrill(state.rpm.value, state.hardness.value || Hardness.Stone).toFixed(2)}s
 			</div>
@@ -111,7 +118,7 @@ export function Mill(props) {
 				<RPM/>
 				<RecipeDuration list={MillingRecipeDurations}/>
 			</div>
-			<img class="block" srcSet="assets/blocks/Millstone.webp 2x"/>
+			<img class="block" srcSet={`${Preview_Millstone} 2x`}/>
 			<div class="output">
 				{+timeToMill(state.rpm.value, state.recipeDuration.value || 100).toFixed(2)}s
 			</div>
@@ -128,7 +135,7 @@ export function Crush(props) {
 				<RecipeDuration list={CrushingRecipeDurations}/>
 				<StackSize/>
 			</div>
-			<img class="block" srcSet="assets/blocks/Crushing_Wheel.webp 2x"/>
+			<img class="block" srcSet={`${Preview_Crushing_Wheel} 2x`}/>
 			<div class="output">
 				{+timeToCrush(state.rpm.value, state.recipeDuration.value || 100, state.stack.value || 1, state.inputDelay.value || 3).toFixed(2)}s
 			</div>
@@ -149,7 +156,7 @@ export function BulkProcess(props) {
 					onInput={onMachines}
 				/>x</label>
 			</div>
-			<img class="block" srcSet="assets/blocks/Encased_Fan.webp 2x"/>
+			<img class="block" srcSet={`${Preview_Encased_Fan} 2x`}/>
 			<div class="output">
 				{+timeToBulkProcess(state.stack.value, state.machines.value || 1).toFixed(2)}s
 			</div>
@@ -164,7 +171,7 @@ export function Belt(props) {
 			<div class="config">
 				<RPM/>
 			</div>
-			<img class="block" srcSet="assets/blocks/Mechanical_Belt_Block.webp 2x"/>
+			<img class="block" srcSet={`${Preview_Mechanical_Belt_Block} 2x`}/>
 			<div class="output">
 				{+timeToBelt(state.rpm.value).toFixed(2)} items per second
 			</div>
@@ -179,7 +186,7 @@ export function Mix(props) {
 			<div class="config">
 				<RPM/>
 			</div>
-			<img class="block" srcSet="assets/blocks/Mechanical_Mixer.webp 2x"/>
+			<img class="block" srcSet={`${Preview_Mechanical_Mixer} 2x`}/>
 			<div class="output">
 				{+timeToMix(state.rpm.value, state.recipeSpeed.value || 1).toFixed(2)}s
 			</div>
@@ -195,7 +202,7 @@ export function Press(props) {
 			<div class="config">
 				<RPM/>
 			</div>
-			<img class="block" srcSet="assets/blocks/Mechanical_Press.webp 2x"/>
+			<img class="block" srcSet={`${Preview_Mechanical_Press} 2x`}/>
 			<div class="output">
 				{+timeToPress(state.rpm.value).toFixed(2)}s
 			</div>
