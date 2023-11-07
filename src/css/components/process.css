@@ -50,4 +50,13 @@
 		background-color: lch(20 5 270);
 		text-align: right;
 	}
+	
+	div.process .warn-rpm {
+		position: absolute;
+		padding: 8px 16px;
+		background-color: lch(10 10 0);
+		box-shadow: 0 0 0 2px lch(100 10 0 / 0.1);
+		color: lch(100 0 0);
+		font-size: 12px;
+	}
 }

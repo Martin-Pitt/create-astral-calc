@@ -185,12 +185,12 @@ export function Mix(props) {
 		<div class="process mix">
 			<div class="config">
 				<RPM/>
+				{state.rpm.value < 32? <p class="warn-rpm">RPM too low to mix</p> : null}
 			</div>
 			<img class="block" srcSet={`${Preview_Mechanical_Mixer} 2x`}/>
 			<div class="output">
 				{+timeToMix(state.rpm.value, state.recipeSpeed.value || 1).toFixed(2)}s
 			</div>
-			{state.rpm.value < 32? <div>RPM too low to mix</div> : null}
 		</div>
 	)
 }
