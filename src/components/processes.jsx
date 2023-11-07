@@ -158,7 +158,7 @@ export function BulkProcess(props) {
 			</div>
 			<img class="block" srcSet={`${Preview_Encased_Fan} 2x`}/>
 			<div class="output">
-				{+timeToBulkProcess(state.stack.value, state.machines.value || 1).toFixed(2)}s
+				{+timeToBulkProcess(state.stack.value || 1, state.machines.value || 1).toFixed(2)}s
 			</div>
 		</div>
 	)
