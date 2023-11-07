@@ -46,7 +46,7 @@
 			min-width: 9ch;
 			padding: 20px;
 			border-radius: 10px;
-			background-color: lch(100 20 270 / 0.1);
+			background-color: lch(20 5 270);
 			text-align: right;
 		}
 		
