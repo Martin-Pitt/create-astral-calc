@@ -13,7 +13,7 @@
 			grid-area: config;
 			padding: 20px;
 			border-radius: 10px;
-			background-color: lch(100 20 270 / 0.1);
+			background-color: lch(20 5 270);
 			
 			& > * + * {
 				margin-top: 5px;
@@ -28,11 +28,12 @@
 			
 			select, input {
 				width: 160px;
+				background-color: lch(25 5 270);
 				text-align: right;
 			}
 			
-			select {
-				background-color: lch(100 20 270 / 0.1);
+			input {
+				padding: 2px 4px;
 			}
 		}
 		
