@@ -5,22 +5,20 @@
 		justify-content: start;
 		background-color: lch(50 50 300 / 0.1);
 		padding: 0px 20px;
-		
-		button.process {
-			padding: 20px 20px 5px;
-			border-bottom: 4px solid transparent;
-			
-			&.is-selected {
-				border-bottom-color: lch(50 80 300);
-			}
-			
-			&:hover {
-				background-color: lch(100 0 0 / 0.2);
-			}
-			
-			&:active {
-				
-			}
-		}
 	}
+	
+	.process-selector button.process {
+		padding: 20px 20px 5px;
+		border-bottom: 4px solid transparent;
+	}
+	
+	.process-selector button.process.is-selected {
+		border-bottom-color: lch(50 80 300);
+	}
+	
+	.process-selector button.process:hover {
+		background-color: lch(100 0 0 / 0.2);
+	}
+	
+	.process-selector button.process:active {}
 }

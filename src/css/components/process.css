@@ -8,74 +8,46 @@
 		justify-items: center;
 		align-items: center;
 		grid-gap: 20px;
+	}
+	
+	div.process .config {
+		grid-area: config;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: lch(20 5 270);
+	}
+	
+	div.process .config > * + * {
+		margin-top: 5px;
+	}
+	
+	div.process label {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		width: 260px;
+	}
 		
-		.config {
-			grid-area: config;
-			padding: 20px;
-			border-radius: 10px;
-			background-color: lch(20 5 270);
-			
-			& > * + * {
-				margin-top: 5px;
-			}
-			
-			label {
-				display: flex;
-				justify-content: space-between;
-				align-items: baseline;
-				width: 260px;
-			}
-			
-			select, input {
-				width: 160px;
-				background-color: lch(25 5 270);
-				text-align: right;
-			}
-			
-			input {
-				padding: 2px 4px;
-			}
-		}
-		
-		.block {
-			grid-area: block;
-		}
-		
-		.output {
-			grid-area: output;
-			min-width: 9ch;
-			padding: 20px;
-			border-radius: 10px;
-			background-color: lch(20 5 270);
-			text-align: right;
-		}
-		
-		&.drill {
-			
-		}
-		
-		&.mill {
-			
-		}
-		
-		&.crush {
-			
-		}
-		
-		&.bulkprocess {
-			
-		}
-		
-		&.belt {
-			
-		}
-		
-		&.mix {
-			
-		}
-		
-		&.press {
-			
-		}
+	select, input {
+		width: 160px;
+		background-color: lch(25 5 270);
+		text-align: right;
+	}
+	
+	div.process input {
+		padding: 2px 4px;
+	}
+	
+	div.process .block {
+		grid-area: block;
+	}
+	
+	div.process .output {
+		grid-area: output;
+		min-width: 9ch;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: lch(20 5 270);
+		text-align: right;
 	}
 }
