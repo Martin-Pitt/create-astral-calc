@@ -61,7 +61,10 @@ export function App(props) {
 	return (
 		<main class="page index">
 			<ProcessSelector/>
-			{Process? <Process/> : null}
+			{Process? <Process/> : <div/>}
+			<time class="generated" datatime={import.meta.env.GENERATED_AT}>
+				Last updated {new Date(import.meta.env.GENERATED_AT).toISOString().substring(0, 10)}
+			</time>
 		</main>
 	);
 }

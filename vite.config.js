@@ -5,4 +5,7 @@ import preact from '@preact/preset-vite'
 export default defineConfig({
 	plugins: [preact()],
 	base: '',
+	define: {
+		'import.meta.env.GENERATED_AT': JSON.stringify(new Date().toJSON()),
+	},
 });
