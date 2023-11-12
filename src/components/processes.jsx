@@ -92,7 +92,7 @@ function RecipeDuration(props) {
 	const selectedRecipe = state[state.process.value].recipeDuration.value?.recipe;
 	
 	return (
-		<label>Recipe: <select onInput={onRecipeDuration}>
+		<label>Input: <select onInput={onRecipeDuration}>
 				<option disabled selected>‹ Select ›</option>
 				{Object.keys(props.list).map(recipe => <option selected={selectedRecipe === recipe}>{recipe}</option>)}
 			</select>
