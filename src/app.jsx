@@ -47,8 +47,6 @@ window.timeToMix = timeToMix;
 window.timeToPress = timeToPress;
 
 
-
-
 export function App(props) {
 	let Process = {
 		drill: Drill,

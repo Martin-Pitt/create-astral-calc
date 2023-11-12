@@ -3,13 +3,43 @@ import { signal, effect, computed } from '@preact/signals';
 export const state = {
 	process: signal('none'),
 	
-	rpm: signal(16),
-	hardness: signal(null),
-	stack: signal(null),
-	machines: signal(1),
-	recipeDuration: signal(null),
-	recipeSpeed: signal(null),
-	inputDelay: signal(null),
+	drill: {
+		rpm: signal(64),
+		hardness: signal(null),
+	},
+	mill: {
+		rpm: signal(64),
+		recipeDuration: signal(null),
+	},
+	crush: {
+		rpm: signal(64),
+		recipeDuration: signal(null),
+		stack: signal(1),
+		inputDelay: signal(null),
+	},
+	bulk: {
+		stack: signal(1),
+		machines: signal(1),
+	},
+	belt: {
+		rpm: signal(64),
+	},
+	mix: {
+		rpm: signal(64),
+		recipeSpeed: signal(null),
+	},
+	press: {
+		rpm: signal(64),
+	},
+	
+	
+	// rpm: signal(16),
+	// hardness: signal(null),
+	// stack: signal(null),
+	// machines: signal(1),
+	// recipeDuration: signal(null),
+	// recipeSpeed: signal(null),
+	// inputDelay: signal(null),
 };
 
 // timeToDrill(rpm, hardness)

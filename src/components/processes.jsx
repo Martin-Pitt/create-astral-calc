@@ -28,14 +28,14 @@ import Preview_Mechanical_Press from '../assets/blocks/Mechanical_Press.webp';
 
 
 function onRPM(event) {
-	state.rpm.value = event.target.valueAsNumber;
+	state[state.process.value].rpm.value = event.target.valueAsNumber;
 }
 
 function RPM(props) {
 	return (
 		<label>RPM: <input
 			type="number"
-			value={state.rpm.value}
+			value={state[state.process.value].rpm.value}
 			min="1"
 			max="256"
 			onInput={onRPM}
@@ -44,14 +44,14 @@ function RPM(props) {
 }
 
 function onStack(event) {
-	state.stack.value = event.target.valueAsNumber;
+	state[state.process.value].stack.value = event.target.valueAsNumber;
 }
 
 function StackSize(props) {
 	return (
 		<label>Stack Size: <input
 			type="number"
-			value={state.stack.value || 1}
+			value={state[state.process.value].stack.value || 1}
 			min="1"
 			max="64"
 			onInput={onStack}
@@ -60,36 +60,41 @@ function StackSize(props) {
 }
 
 function onMachines(event) {
-	state.machines.value = event.target.valueAsNumber;
+	state[state.process.value].machines.value = event.target.valueAsNumber;
 }
 
-const selectedBlockHardness = signal(null);
 function onBlock(event) {
-	state.hardness.value = Hardness[event.target.value];
-	selectedBlockHardness.value = event.target.value;
+	state[state.process.value].hardness.value = {
+		block: event.target.value,
+		number: Hardness[event.target.value]
+	};
 }
+
 function BlockHardness(props) {
+	const selectedBlock = state[state.process.value].hardness.value?.block;
 	return (
 		<label>Block: <select onInput={onBlock}>
 				<option disabled selected>‹ Select ›</option>
-				{Object.keys(Hardness).map(block => <option selected={selectedBlockHardness.value === block}>{block}</option>)}
+				{Object.keys(Hardness).map(block => <option selected={selectedBlock === block}>{block}</option>)}
 			</select>
 		</label>
 	);
 }
 
-
-const selectedRecipeDuration = signal(null);
 function RecipeDuration(props) {
 	const onRecipeDuration = useCallback(event => {
-		state.recipeDuration.value = props.list[event.target.value];
-		selectedRecipeDuration.value = event.target.value;
+		state[state.process.value].recipeDuration.value = {
+			recipe: event.target.value,
+			duration: props.list[event.target.value],
+		};
 	}, [props.list]);
+	
+	const selectedRecipe = state[state.process.value].recipeDuration.value?.recipe;
 	
 	return (
 		<label>Recipe: <select onInput={onRecipeDuration}>
 				<option disabled selected>‹ Select ›</option>
-				{Object.keys(props.list).map(recipe => <option selected={selectedRecipeDuration.value === recipe}>{recipe}</option>)}
+				{Object.keys(props.list).map(recipe => <option selected={selectedRecipe === recipe}>{recipe}</option>)}
 			</select>
 		</label>
 	);
@@ -97,6 +102,9 @@ function RecipeDuration(props) {
 
 
 export function Drill(props) {
+	const rpm = state[state.process.value].rpm.value;
+	const hardness = state[state.process.value].hardness.value?.number || Hardness.Stone;
+	
 	return (
 		<div class="process drill">
 			<div class="config">
@@ -105,13 +113,16 @@ export function Drill(props) {
 			</div>
 			<img class="block" srcSet={`${Preview_Mechanical_Drill} 2x`}/>
 			<div class="output">
-				{+timeToDrill(state.rpm.value, state.hardness.value || Hardness.Stone).toFixed(2)}s
+				{+timeToDrill(rpm, hardness).toFixed(2)}s
 			</div>
 		</div>
 	)
 }
 
 export function Mill(props) {
+	const rpm = state[state.process.value].rpm.value;
+	const recipeDuration = state[state.process.value].recipeDuration.value?.duration || 100;
+	
 	return (
 		<div class="process mill">
 			<div class="config">
@@ -120,14 +131,18 @@ export function Mill(props) {
 			</div>
 			<img class="block" srcSet={`${Preview_Millstone} 2x`}/>
 			<div class="output">
-				{+timeToMill(state.rpm.value, state.recipeDuration.value || 100).toFixed(2)}s
+				{+timeToMill(rpm, recipeDuration).toFixed(2)}s
 			</div>
 		</div>
 	)
 }
 
 export function Crush(props) {
-	// timeToCrush(rpm, recipeDuration = 100, stack = 1, inputDelay = 3)
+	const rpm = state[state.process.value].rpm.value;
+	const recipeDuration = state[state.process.value].recipeDuration.value?.duration || 100;
+	const stack = state[state.process.value].stack.value || 1;
+	const inputDelay = state[state.process.value].inputDelay.value || 3;
+	
 	return (
 		<div class="process crush">
 			<div class="config">
@@ -137,35 +152,38 @@ export function Crush(props) {
 			</div>
 			<img class="block" srcSet={`${Preview_Crushing_Wheel} 2x`}/>
 			<div class="output">
-				{+timeToCrush(state.rpm.value, state.recipeDuration.value || 100, state.stack.value || 1, state.inputDelay.value || 3).toFixed(2)}s
+				{+timeToCrush(rpm, recipeDuration, stack, inputDelay).toFixed(2)}s
 			</div>
 		</div>
 	)
 }
 
 export function BulkProcess(props) {
-	// timeToBulkProcess(stack = 1, fans = 1)
+	const stack = state[state.process.value].stack.value || 1;
+	const machines = state[state.process.value].machines.value || 1;
+	
 	return (
 		<div class="process bulkprocess">
 			<div class="config">
 				<StackSize/>
 				<label><abbr title="Multiple fans applying the same processing effect on the same block divide the processing time">Overlapping</abbr>: <input
 					type="number"
-					value={state.machines.value || 1}
+					value={machines}
 					min="1"
 					onInput={onMachines}
 				/>x</label>
 			</div>
 			<img class="block" srcSet={`${Preview_Encased_Fan} 2x`}/>
 			<div class="output">
-				{+timeToBulkProcess(state.stack.value || 1, state.machines.value || 1).toFixed(2)}s
+				{+timeToBulkProcess(stack, machines).toFixed(2)}s
 			</div>
 		</div>
 	)
 }
 
 export function Belt(props) {
-	// timeToBelt(rpm)
+	const rpm = state[state.process.value].rpm.value;
+	
 	return (
 		<div class="process belt">
 			<div class="config">
@@ -173,30 +191,33 @@ export function Belt(props) {
 			</div>
 			<img class="block" srcSet={`${Preview_Mechanical_Belt_Block} 2x`}/>
 			<div class="output">
-				{+timeToBelt(state.rpm.value).toFixed(2)} items per second
+				{+timeToBelt(rpm).toFixed(2)} items per second
 			</div>
 		</div>
 	)
 }
 
 export function Mix(props) {
-	// timeToMix(rpm, recipeSpeed = 1)
+	const rpm = state[state.process.value].rpm.value;
+	const recipeSpeed = state[state.process.value].recipeSpeed.value || 1;
+	
 	return (
 		<div class="process mix">
 			<div class="config">
 				<RPM/>
-				{state.rpm.value < 32? <p class="warn-rpm">RPM too low to mix</p> : null}
+				{rpm < 32? <p class="warn-rpm">RPM too low to mix</p> : null}
 			</div>
 			<img class="block" srcSet={`${Preview_Mechanical_Mixer} 2x`}/>
 			<div class="output">
-				{+timeToMix(state.rpm.value, state.recipeSpeed.value || 1).toFixed(2)}s
+				{+timeToMix(rpm, recipeSpeed).toFixed(2)}s
 			</div>
 		</div>
 	)
 }
 
 export function Press(props) {
-	// timeToPress(rpm)
+	const rpm = state[state.process.value].rpm.value;
+	
 	return (
 		<div class="process press">
 			<div class="config">
@@ -204,7 +225,7 @@ export function Press(props) {
 			</div>
 			<img class="block" srcSet={`${Preview_Mechanical_Press} 2x`}/>
 			<div class="output">
-				{+timeToPress(state.rpm.value).toFixed(2)}s
+				{+timeToPress(rpm).toFixed(2)}s
 			</div>
 		</div>
 	)
