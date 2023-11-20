@@ -6,7 +6,7 @@ import {
 	CrushingRecipeDurations,
 	BeltMovementPerRotation,
 	PressingCycle,
-	PressingCooldown,
+	PressingEntityScan,
 	Config,
 } from '../data/create';
 import {

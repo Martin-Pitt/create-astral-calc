@@ -5,7 +5,7 @@ import {
 	CrushingRecipeDurations,
 	BeltMovementPerRotation,
 	PressingCycle,
-	PressingCooldown,
+	PressingEntityScan,
 	Config,
 } from './data/create';
 import {
@@ -36,7 +36,7 @@ window.MillingRecipeDurations = MillingRecipeDurations;
 window.CrushingRecipeDurations = CrushingRecipeDurations;
 window.BeltMovementPerRotation = BeltMovementPerRotation;
 window.PressingCycle = PressingCycle;
-window.PressingCooldown = PressingCooldown;
+window.PressingEntityScan = PressingEntityScan;
 window.Config = Config;
 window.timeToDrill = timeToDrill;
 window.timeToMill = timeToMill;
