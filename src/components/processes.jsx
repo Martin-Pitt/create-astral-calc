@@ -170,6 +170,7 @@ export function BulkProcess(props) {
 					type="number"
 					value={machines}
 					min="1"
+					max="6"
 					onInput={onMachines}
 				/>x</label>
 			</div>
@@ -200,16 +201,17 @@ export function Belt(props) {
 export function Mix(props) {
 	const rpm = state[state.process.value].rpm.value;
 	const recipeSpeed = state[state.process.value].recipeSpeed.value || 1;
+	const time = timeToMix(rpm, recipeSpeed);
 	
 	return (
 		<div class="process mix">
 			<div class="config">
 				<RPM/>
-				{rpm < 32? <p class="warn-rpm">RPM too low to mix</p> : null}
+				{rpm < 32? <p class="warn-rpm">RPM too low to mix (&thinsp;&lt;&thinsp;32&thinsp;RPM&thinsp;)</p> : null}
 			</div>
 			<img class="block" srcSet={`${Preview_Mechanical_Mixer} 2x`}/>
 			<div class="output">
-				{+timeToMix(rpm, recipeSpeed).toFixed(2)}s
+				{isFinite(time)? +time.toFixed(2) : '∞'}s
 			</div>
 		</div>
 	)

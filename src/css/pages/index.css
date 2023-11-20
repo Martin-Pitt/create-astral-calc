@@ -5,10 +5,32 @@
 		background-color: lch(6 1.65 328.72);
 	}
 	
-	.generated {
-		padding: 10px;
-		opacity: 0.2;
-		font-size: 10px;
+	footer {
+		display: grid;
+		grid-auto-flow: column;
+		justify-content: space-between;
+		align-items: end;
+		padding: 20px;
+		color: lch(100 0 0 / 0.5);
+		font-weight: 300;
+		font-size: 12px;
+	}
+	
+	footer .right {
 		text-align: right;
+	}
+	
+	footer a {
+		color: lch(70 30 328.72);
+	}
+	
+	footer .name {
+		color: lch(100 0 0 / 0.7);
+		font-weight: 400;
+	}
+	
+	footer .author {}
+	footer .generated {
+		color: lch(100 0 0 / 0.2);
 	}
 }

@@ -59,4 +59,9 @@
 		color: lch(100 0 0);
 		font-size: 12px;
 	}
+	
+	div.process .warn-rpm code {
+		margin: 0 6px;
+		font-size: 12px;
+	}
 }
