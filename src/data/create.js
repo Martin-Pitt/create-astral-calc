@@ -126,7 +126,7 @@ export const CrushingRecipeDurations = {
 
 export const BeltMovementPerRotation = 2.5;
 export const PressingCycle = 240;
-export const PressingCooldown = 10;
+export const PressingEntityScan = 10;
 export const Config = {
 	FanInWorldProcessingTime: 250,
 };
