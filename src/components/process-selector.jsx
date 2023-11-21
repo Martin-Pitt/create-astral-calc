@@ -14,6 +14,7 @@ export function ProcessSelector(props) {
 		belt: 'Belt',
 		mix: 'Mix',
 		press: 'Press',
+		// saw: 'Saw',
 	};
 	
 	return (

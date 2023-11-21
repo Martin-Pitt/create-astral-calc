@@ -33,4 +33,14 @@
 	footer .generated {
 		color: lch(100 0 0 / 0.2);
 	}
+	
+	
+	.app-title {
+		display: grid;
+		justify-content: center;
+		align-content: center;
+		justify-items: center;
+		align-items: center;
+		font-size: 32px;
+	}
 }

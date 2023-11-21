@@ -31,6 +31,10 @@ export const state = {
 	press: {
 		rpm: signal(64),
 	},
+	saw: {
+		rpm: signal(64),
+		recipeDuration: signal(null),
+	},
 	
 	
 	// rpm: signal(16),

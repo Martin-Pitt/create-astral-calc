@@ -58,3 +58,19 @@ export function timeToPress(rpm) {
 	let tickSpeed = Math.round(x*(1-t) + y*t);
 	return ((PressingCycle + PressingEntityScan) / tickSpeed) / 20;
 }
+
+export function timeToSaw(rpm, recipeDuration = 100) {
+	// https://create.fandom.com/wiki/Mechanical_Saw
+	// https://github.com/Creators-of-Create/Create/blob/2201d87da7744cf9ee3f83e1e4c21643244f342b/src/main/java/com/simibubi/create/content/kinetics/saw/SawBlockEntity.java#L171
+	recipeDuration -= 20; // Create code skips from less than 5 time remaining
+	let processingSpeed = Math.min(Math.max(rpm / 24, 1), 128);
+	let ticks = Math.ceil(recipeDuration / processingSpeed) + 20;
+	return ticks / 20;
+}
+
+/*
+	16 * (60/((((100-20) / (32/24)) + 20)/20))
+	
+	(100 - 20 / (32/24)) + 20
+	
+*/

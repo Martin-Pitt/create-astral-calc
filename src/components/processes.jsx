@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from 'preact/hooks';
 import { signal } from '@preact/signals';
 import {
+	ItemNames,
 	Hardness,
 	MillingRecipeDurations,
 	CrushingRecipeDurations,
@@ -17,6 +18,7 @@ import {
 	timeToBelt,
 	timeToMix,
 	timeToPress,
+	timeToSaw,
 } from '../lib/calc';
 import Preview_Mechanical_Drill from '../assets/blocks/Mechanical_Drill.webp';
 import Preview_Millstone from '../assets/blocks/Millstone.webp';
@@ -75,7 +77,11 @@ function BlockHardness(props) {
 	return (
 		<label>Block: <select onInput={onBlock}>
 				<option disabled selected>‹ Select ›</option>
-				{Object.keys(Hardness).map(block => <option selected={selectedBlock === block}>{block}</option>)}
+				{Object.keys(Hardness).map(block => 
+					<option selected={selectedBlock === block} value={block}>
+						{ItemNames[block]}
+					</option>
+				)}
 			</select>
 		</label>
 	);
@@ -94,7 +100,10 @@ function RecipeDuration(props) {
 	return (
 		<label>Input: <select onInput={onRecipeDuration}>
 				<option disabled selected>‹ Select ›</option>
-				{Object.keys(props.list).map(recipe => <option selected={selectedRecipe === recipe}>{recipe}</option>)}
+				{Object.keys(props.list).map(recipe =>
+						<option selected={selectedRecipe === recipe} value={recipe}>
+						{ItemNames[recipe]}
+					</option>)}
 			</select>
 		</label>
 	);
@@ -228,6 +237,24 @@ export function Press(props) {
 			<img class="block" srcSet={`${Preview_Mechanical_Press} 2x`}/>
 			<div class="output">
 				{+timeToPress(rpm).toFixed(2)}s
+			</div>
+		</div>
+	)
+}
+
+export function Saw(props) {
+	const rpm = state[state.process.value].rpm.value;
+	const recipeDuration = state[state.process.value].recipeDuration.value?.duration || 100;
+	
+	return (
+		<div class="process saw">
+			<div class="config">
+				<RPM/>
+				{/* <RecipeDuration list={SawingRecipeDurations}/> */}
+			</div>
+			{/* <img class="block" srcSet={`${Preview_Mechanical_Saw} 2x`}/> */}
+			<div class="output">
+				{+timeToSaw(rpm, recipeDuration).toFixed(2)}
 			</div>
 		</div>
 	)
