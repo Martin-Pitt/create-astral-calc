@@ -259,3 +259,28 @@ export function Saw(props) {
 		</div>
 	)
 }
+
+export function Pump(props) {
+	
+	return (
+		<div class="process pump">
+			<blockquote>
+				Tedd0's failproof way to make an bottomless source of: Chocolate, Honey, Lava, Shimmer, or Water.<br/>
+				<br/>
+				<ol>
+					<li>Make sure hole is at least 10001 blocks.</li>
+					<li>Lower hose pulley by 1</li>
+					<li>Pump into hose pulley until it say bottomless.</li>
+					<li>Once bottomless lower the hose pulley all the way down.</li>
+					<li>Once down you will lose bottomless</li>
+					<li>Continue pumping INTO until bottomless again</li>
+					<li>Now once the hose pulley is at the bottom and is bottomless, you can now pump OUT</li>
+				</ol>
+				<br/>
+				Note: you must do it with a create pump to be failproof. even if other method are faster
+			</blockquote>
+		</div>
+	)
+	
+	
+}

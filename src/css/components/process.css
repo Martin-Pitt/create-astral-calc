@@ -64,4 +64,24 @@
 		margin: 0 6px;
 		font-size: 12px;
 	}
+	
+	
+	div.pump {}
+	
+	div.pump blockquote {
+		padding: 10px;
+		border-left: 4px solid grey;
+		background-color: lch(10 5 0);
+	}
+	
+	div.pump ol {
+		padding-left: 25px;
+	}
+	
+	div.pump ol li {
+		list-style: decimal;
+		padding: 2px;
+	}
+	
+	
 }

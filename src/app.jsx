@@ -1,5 +1,5 @@
 import { state } from './state';
-import { Drill, Mill, Crush, BulkProcess, Belt, Mix, Press, Saw } from './components/processes';
+import { Drill, Mill, Crush, BulkProcess, Belt, Mix, Press, Saw, Pump } from './components/processes';
 import { ProcessSelector } from './components/process-selector';
 import './debug';
 
@@ -14,6 +14,7 @@ export function App(props) {
 		mix: Mix,
 		press: Press,
 		saw: Saw,
+		pump: Pump,
 	}[state.process.value];
 	
 	return (
