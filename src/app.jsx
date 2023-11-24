@@ -2,6 +2,7 @@ import { state } from './state';
 import { Drill, Mill, Crush, BulkProcess, Belt, Mix, Press, Saw, Pump } from './components/processes';
 import { ProcessSelector } from './components/process-selector';
 import './debug';
+import logoAstral from './assets/logo-astral.webp';
 
 
 export function App(props) {
@@ -22,7 +23,7 @@ export function App(props) {
 			<ProcessSelector/>
 			{Process? <Process/> : (
 				<div class="app-title">
-					Create Calc
+					<img class="logo" srcSet={`${logoAstral} 2x`} alt="Create: Astral Calculator"/>
 				</div>
 			)}
 			<footer>
@@ -34,7 +35,7 @@ export function App(props) {
 					Issues or suggestions? See the <a href="https://github.com/Martin-Pitt/create-astral-calc/issues">github repository</a>
 				</div>
 				<div class="right">
-					<span class="name">Calculator for <a href="https://www.curseforge.com/minecraft/modpacks/create-astral">Create: Astral</a></span><br/>
+					<span class="name">Unofficial calculator for <a href="https://www.curseforge.com/minecraft/modpacks/create-astral">Create: Astral</a></span><br/>
 					<br/>
 					<span class="author">Made by Nexii</span><br/>
 					<br/>
