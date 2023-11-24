@@ -8,12 +8,26 @@
 	}
 	
 	.process-selector button.process {
-		padding: 20px 20px 5px;
+		padding: 10px 20px 5px;
 		border-bottom: 4px solid transparent;
+	}
+	
+	.process-selector button.process .icon {
+		width: 1.5em;
+		vertical-align: middle;
+		margin-right: 5px;
+		pointer-events: none;
+		filter:
+			drop-shadow(0px 1px currentColor)
+			drop-shadow(1px 0px currentColor)
+			drop-shadow(0px -1px currentColor)
+			drop-shadow(-1px 0px currentColor)
+		;
 	}
 	
 	.process-selector button.process.is-selected {
 		border-bottom-color: lch(50 80 300);
+		color: lch(60 90 300);
 	}
 	
 	.process-selector button.process:hover {
